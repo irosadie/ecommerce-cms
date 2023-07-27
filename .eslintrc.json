@@ -1,3 +1,72 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "check-file",
+    "@typescript-eslint",
+    "react"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "react/jsx-uses-react": "error", //plugin react
+    "react/jsx-uses-vars": "error", //plugin react
+    "eol-last": ["error", "always"], //tidak boleh tidak ada newline pada baris terakhir
+    "quotes": ["error", "single"], //tidak boleh double quote pada import
+    "semi": ["error", "never"], //tidak boleh menggunakan titik koma
+    "@typescript-eslint/no-explicit-any": ["error"], //tidak boleh menggunakan type any
+    "no-console": ["error", {"allow": ["warn", "error"] }], //tidak boleh ada console
+    "camelcase": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ], //tidak boleh ada variable yang tidak digunakan, kecuali dengan awalan _
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+          "selector": "variable",
+          "format": ["camelCase", "UPPER_CASE", "PascalCase"]
+      },
+      {
+          "selector": "typeLike",
+          "format": ["PascalCase"]
+      },
+      {
+          "selector": ["function"],
+          "modifiers": ["const", "exported"],
+          "format": ["PascalCase"]
+      }
+    ],
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "src/**/*": "KEBAB_CASE"
+      }
+    ], //nama file harus Kebab Case
+    // "check-file/folder-naming-convention": [
+    //   "error",
+    //   {
+    //     "src/**/*": "KEBAB_CASE"
+    //   }
+    // ], //nama folder harus Kebab Case
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": ["const", "let"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let"],
+        "next": ["const", "let"]
+      },
+      { "blankLine": "always", "prev": "directive", "next": "*" },
+      { "blankLine": "any", "prev": "directive", "next": "directive" },
+      { "blankLine": "always", "prev": ["case", "default"], "next": "*" }
+    ] //padding rules between statments
+  }
 }
