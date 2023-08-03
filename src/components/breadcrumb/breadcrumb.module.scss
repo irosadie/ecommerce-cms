@@ -1,0 +1,14 @@
+@mixin not-last-li {
+  li:not(:last-child) {
+    @apply text-[#9D9EA1];
+
+    span {
+      @apply font-medium text-[#242424];
+    }
+  }
+}
+
+ul.breadcrumb{
+  @apply flex gap-x-6 text-sm;
+  @include not-last-li;
+}

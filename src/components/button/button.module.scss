@@ -1,0 +1,122 @@
+
+
+.btn{
+    @apply flex items-center;
+
+    &.w_standard{
+        @apply px-3;
+    }
+
+    &.w_full{
+        @apply px-3.5 w-full;
+    }
+
+    &.i_default{
+        @apply bg-inherit;
+        &:hover {
+            @apply bg-gray-100
+        }
+    }
+
+    &.i_primary_border{
+        @apply border border-primary-50 text-primary-50;
+        &:disabled {
+            @apply border-main-25 text-main-25 cursor-not-allowed;
+        }
+    }
+
+    &.i_primary_soft_border {
+        @apply border border-[#D1F9F1] text-[#D1F9F1];
+    }
+
+    &.i_success_border {
+        @apply border border-success-50 text-success-50;
+    }
+
+    &.i_warning_border {
+        @apply border border-warning-50 text-warning-50;
+    }
+
+    &.i_error_border {
+        @apply border border-error-50 text-error-50;
+    }
+
+    &.i_light_border {
+        @apply border border-[#EDEFF3] text-[#EDEFF3];
+    }
+
+    &.d_tiny {
+        @apply px-1.5 py-0.5 font-medium text-xs;
+    }
+
+    &.d_small {
+        @apply py-1.5 font-medium text-sm;
+    }
+
+    &.d_normal{
+        @apply py-2 px-6 font-medium text-base;
+    }
+
+    &.d_bigger{
+        @apply py-2.5 px-6 font-medium text-base;
+    }
+
+    &.cv_primary {
+        @apply bg-primary-50;
+        &:disabled {
+            @apply bg-main-25 cursor-not-allowed text-white;
+        }
+    }
+
+    &.cv_light {
+        @apply bg-[#EDEFF3];
+    }
+
+    &.cv_primary_soft {
+        @apply bg-[#D1F9F1];
+    }
+
+    &.cv_success {
+        @apply bg-success-50;
+    }
+
+    &.cv_warning {
+        @apply bg-warning-50;
+    }
+
+    &.cv_error {
+        @apply bg-error-50;
+    }
+
+    &.btn_shadow {
+        box-shadow: 0px 4px 12px rgba(116, 116, 116, 0.25);
+    }
+
+    &.txt_white{
+        @apply text-white;
+    }
+
+    &.txt_black {
+        @apply text-black;
+    }
+
+    &.r_standard{
+        @apply rounded-md;
+    }
+
+    &.r_full{
+        @apply rounded-full;
+    }
+
+    &.r_none{
+        @apply rounded-none;
+    }
+
+    .icon_left{
+        @apply flex gap-2 items-center;
+    }
+
+    .icon_right {
+        @apply flex gap-2 flex-row-reverse items-center;
+    }
+}

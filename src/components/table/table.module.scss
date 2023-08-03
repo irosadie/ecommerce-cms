@@ -1,0 +1,80 @@
+table.table {
+    @apply w-full text-sm text-left;
+
+    thead {
+        @apply bg-white font-semibold border-b border-[#E2E4E9];
+
+        th {
+            @apply relative px-4 py-5;
+        }
+    }
+
+    tbody {
+        @apply text-sm;
+
+        &.not_found{
+            .not_found_wrapper{
+                @apply text-main-25 h-[300px] grid content-center justify-center;
+
+                .wording{
+                    @apply grid gap-y-4;
+
+                    p{
+                        @apply text-5xl font-bold;
+                    }
+                    span{
+                        @apply text-xl text-center;
+                    }
+                }
+            }
+        }
+
+        tr {
+            @apply bg-white border-b border-[#E2E4E9] even:bg-white odd:bg-gray-50;
+
+            &:hover {
+                @apply bg-gray-100;
+            }
+
+            td {
+                @apply px-4 py-3;
+
+                &.td_loading {
+                    @apply p-2 px-4;
+                }
+
+                &.p_left {
+                    @apply text-start;
+                }
+
+                &.p_right {
+                    @apply text-end;
+                }
+
+                &.p_center {
+                    @apply align-top;
+                }
+            }
+        }
+    }
+}
+
+ul.pagination{
+    @apply grid justify-end space-y-2 mt-6;
+    li{
+        span{
+            @apply text-gray-600 text-xs justify-end flex;
+        }
+        .pagination_item{
+            @apply justify-end flex;
+        }
+    }
+}
+
+.text_right{
+    @apply text-right;
+}
+
+.border_b{
+    @apply border-b;
+}

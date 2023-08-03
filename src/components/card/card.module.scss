@@ -1,0 +1,56 @@
+.card{
+    @apply max-w-lg bg-white min-w-full;
+
+    &.br_none{
+        @apply rounded-none;
+    }
+
+    &.br_small {
+        @apply rounded-lg;
+    }
+
+    &.br_medium {
+        @apply rounded-2xl;
+    }
+
+    &.i_main_border {
+        @apply border border-main--50;
+    }
+
+    &.i_primary_border {
+        @apply border border-primary-50;
+    }
+
+    &.i_success_border {
+        @apply border border-success-50;
+    }
+
+    &.i_warning_border {
+        @apply border border-warning-50;
+    }
+
+    &.i_error_border {
+        @apply border border-error-50;
+    }
+
+    &.cv_primary {
+        @apply bg-primary-50;
+    }
+
+    &.cv_success {
+        @apply bg-success-50;
+    }
+
+    &.cv_warning {
+        @apply bg-warning-50;
+    }
+
+    &.cv_error {
+        @apply bg-error-50;
+    }
+
+    &.card_shadow {
+        @apply shadow-lg;
+    }
+
+}
