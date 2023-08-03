@@ -1,0 +1,65 @@
+.text_input_wrapper{
+    @apply grid;
+
+    label{
+        @apply text-xs mb-1 text-main-50;
+
+        &.label_required{
+            &::after {
+                @apply content-["*"] text-[#B61515] pl-1;
+            }
+        }
+    }
+
+    span{
+        @apply -mb-1 flex justify-end text-xs text-error-50 mt-1;
+    }
+
+    .icon_wrapper_right{
+        @apply absolute top-2.5 right-3 cursor-pointer;
+    }
+
+    .icon_wrapper_left {
+        @apply absolute top-3.5 left-3;
+    }
+
+    .p_relative{
+        @apply relative;
+    }
+
+    input{
+        @apply rounded-lg text-sm text-main-100 leading-5 w-full;
+
+        &.d_normal{
+            @apply py-2.5 px-4;
+        }
+
+        &.d_normal_left_icon {
+            @apply py-2.5 pr-4 pl-8;
+        }
+
+        &.d_normal_right_icon {
+            @apply py-2.5 pr-8 pl-4;
+        }
+
+        &.d_normal_both_icon {
+            @apply py-2.5 px-8;
+        }
+
+        &.i_main{
+            @apply border border-main--50
+        }
+
+        &.i_success {
+            @apply border border-success-50
+        }
+
+        &.i_warning {
+            @apply border border-warning-50
+        }
+
+        &.i_error {
+            @apply border border-error-50
+        }
+    }
+}

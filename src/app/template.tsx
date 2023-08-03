@@ -1,8 +1,9 @@
 'use client'
-import { FC, Fragment, ReactNode } from 'react'
-import { QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
-import { QueryClient } from 'react-query'
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import React, { FC, Fragment, ReactNode } from 'react'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { RecoilRoot } from 'recoil'
 
 type RootTemplateProps = {
   children: ReactNode
@@ -14,10 +15,12 @@ const RootTemplate: FC<RootTemplateProps> = ({ children }) => {
 
   return (
     <Fragment>
-      {/* <QueryClientProvider client={queryClient}> */}
-      {children}
-      {/* </QueryClientProvider> */}
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <QueryClientProvider client={queryClient}>
+        <RecoilRoot>
+          {children}
+        </RecoilRoot>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </Fragment>
   )
 }

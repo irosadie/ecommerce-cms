@@ -1,0 +1,23 @@
+span.badge{
+    @apply text-white rounded-full text-xs whitespace-nowrap;
+
+    &.i_light {
+        @apply bg-[#D8D9DE];
+    }
+
+    &.i_warning {
+        @apply bg-warning-50;
+    }
+
+    &.i_primary{
+        @apply bg-primary-50;
+    }
+
+    &.i_error{
+        @apply bg-error-100;
+    }
+
+    &.d_normal{
+        @apply px-4 py-0.5;
+    }
+}
