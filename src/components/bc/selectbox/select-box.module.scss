@@ -1,0 +1,13 @@
+.selectbox_wrapper{
+    @apply block;
+
+    label:first-child{
+        @apply text-xs mb-1 text-main-50;
+
+        &.label_required{
+            &::after {
+                @apply content-["*"] text-[#B61515] pl-1;
+            }
+        }
+    }
+}
