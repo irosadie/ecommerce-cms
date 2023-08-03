@@ -1,3 +1,3 @@
 .container{
-  @apply flex justify-between items-end;
+  @apply grid tablet:flex justify-between tablet:items-end;
 }

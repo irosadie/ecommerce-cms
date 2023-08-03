@@ -18,23 +18,20 @@ import { FilterProduct } from '$/sections/products/filter'
 import { afterDiscount, currencyFormat } from '$/utils'
 import { ProductInfo } from '$/components/product-info'
 import { PriceInfo } from '$/components/price-info'
+import { AlertSection } from '$/sections/products/alert'
 
 const THEAD = [
   {
-    title: 'Product ID',
-    className: 'w-[10%]',
+    title: 'ID',
   },
   {
     title: 'Product',
-    className: 'w-[26%]',
   },
   {
     title: 'Description',
-    className: 'w-[45%]',
   },
   {
     title: 'Price',
-    className: 'w-[10%]',
   },
   {
     title: 'Discount',
@@ -63,6 +60,7 @@ const ProductPage = () => {
   const [isFiltered, setIsFiltered] = useState(false)
   const [dataTabel, setDataTabel] = useState<TableProps['data']>()
   const [dataChart, setDataChart] = useState<DataChartProps>()
+  const [isShowAlert, setIsShowAlert] = useState(true)
 
   const {
     page: currentPage,
@@ -189,7 +187,7 @@ const ProductPage = () => {
         })
       })
 
-      const labels = products.map(item => `${item.brand}(${item.category})`)
+      const labels = products.map(item => `${item.title} (${item.category})`)
       const dataSets: ChartProps['dataSets'] = [
         {
           label: 'stock',
@@ -229,6 +227,13 @@ const ProductPage = () => {
     formFilter.setFieldValue('brands', data)
   }
 
+  const handleOnRemoveButton = () => {
+    formSearch.setFieldValue('q', '')
+    if (formSearch.touched.q) {
+      formSearch.handleSubmit()
+    }
+  }
+
   return (
     <Container>
       <Wrapper>
@@ -236,6 +241,15 @@ const ProductPage = () => {
           title='Product List'
           breadcrumb={[{ title: 'Home' }, { title: 'Product List' }]}
         />
+
+        {
+          isShowAlert && (
+            <AlertSection
+              onDismiss={() => setIsShowAlert(v => !v)}
+            />
+          )
+        }
+
         <ContentSection
           filterButtonProps={{
             onClick: () => setIsShowFilter(v => !v),
@@ -252,8 +266,9 @@ const ProductPage = () => {
               type: 'text',
               value: formSearch.values.q,
               removeButton: true,
+              onBlur: () => formSearch.handleSubmit(),
               onChange: formSearch.handleChange,
-              onRemoveButton: () => formSearch.setFieldValue('q', '')
+              onRemoveButton: handleOnRemoveButton
             }
           }}
           tableProps={{
@@ -276,7 +291,7 @@ const ProductPage = () => {
             onPageChange: handlePageChanged,
           }}
         />
-
+        {JSON.stringify(formSearch.touched.q ? true : false)}
         <FilterProduct
           isShow={isShowFilter}
           onClose={() => setIsShowFilter(v => !v)}

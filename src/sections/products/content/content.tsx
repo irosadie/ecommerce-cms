@@ -26,9 +26,9 @@ const ContentSection: FC<ContentSectionProps> = (props) => {
   return (
     <section>
       <Card className='p-4'>
-        <div className='space-y-4'>
+        <div>
           <div className='flex justify-between pb-4 border-b'>
-            <div className='flex gap-4 w-full '>
+            <div className='flex gap-4 w-full'>
               <Button
                 icon='filter'
                 rounded='standard'
@@ -36,7 +36,7 @@ const ContentSection: FC<ContentSectionProps> = (props) => {
                 className='scale-95'
                 {...filterButtonProps}
               />
-              <Form className='w-[30%]' {...searchProps.formProps}>
+              <Form className='w-full tablet:w-1/2 laptop:w-[30%]' {...searchProps.formProps}>
                 <TextInput
                   leftIcon='loop'
                   removeButton={true}
@@ -44,7 +44,7 @@ const ContentSection: FC<ContentSectionProps> = (props) => {
                 />
               </Form>
             </div>
-            <ul className='flex space-x-1 items-end'>
+            <ul className='hidden tablet:flex space-x-1 items-end '>
               <li>
                 <Button
                   icon='table'
@@ -67,8 +67,7 @@ const ContentSection: FC<ContentSectionProps> = (props) => {
               </li>
             </ul>
           </div>
-
-          <div>
+          <div className='pt-2'>
             {{
               'table': <Tabel {...tableProps} />,
               'chart': <Chart {...chartProps} />

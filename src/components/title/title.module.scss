@@ -31,7 +31,7 @@
 }
 
 .d_h1_big{
-    @apply font-semibold text-4xl text-black leading-[48px];
+    @apply text-2xl font-semibold tablet:text-4xl text-black leading-[48px];
 }
 
 .d_h2_big{

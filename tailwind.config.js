@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/sections/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './node_modules/flowbite-react/**/*.js',
@@ -19,9 +20,6 @@ module.exports = {
       content: {
         'triangle-up': 'url("/img/triangle-up.svg")',
         'triangle-down': 'url("/img/triangle-down.svg")',
-      },
-      fontFamily: {
-        sans: ['var(--font-poppins)'],
       },
       colors: {
         pageactive: '#4AC3BE',
