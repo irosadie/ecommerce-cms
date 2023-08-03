@@ -61,5 +61,9 @@
         &.i_error {
             @apply border border-error-50
         }
+
+        &::placeholder{
+            @apply text-main-25;
+        }
     }
 }

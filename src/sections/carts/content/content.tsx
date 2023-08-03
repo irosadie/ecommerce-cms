@@ -13,11 +13,11 @@ const ContentSection: FC<ContentSectionProps> = (props) => {
   return (
     <section>
       <Card>
-        <div className='space-y-4 bg-red-300'>
-          <div className='p-4 border-b mb-4'>
+        <div>
+          <div className='p-4 border-b'>
             <h2 className='font-medium text-lg'>Detail of Items</h2>
           </div>
-          <div className='p-4'>
+          <div className='p-4 pt-2'>
             <Tabel {...tableProps} />
           </div>
         </div>

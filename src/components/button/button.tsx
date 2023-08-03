@@ -1,14 +1,14 @@
 import React, { Fragment, FC, ButtonHTMLAttributes } from 'react'
 import { button } from './button.variant'
 import { type VariantProps } from 'class-variance-authority'
-import { ChartIcon, GithubIcon, TableIcon } from '$/components/icon'
+import { BurgerIcon, ChartIcon, FileIcon, GithubIcon, TableIcon, TimesIcon } from '$/components/icon'
 import styles from './button.module.scss'
 import FilterIcon from '../icon/filter'
 
 export interface ButtonProps
     extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof button> {
-    icon?: 'chart' | 'table' | 'filter' | 'github',
+    icon?: 'chart' | 'table' | 'filter' | 'github' | 'file' | 'burger' | 'times',
     iconColor?: string,
     iconPosition?: 'left' | 'right'
 }
@@ -43,6 +43,9 @@ const Button: FC<ButtonProps> = (props) => {
                                 'table': <TableIcon color={iconColor} />,
                                 'filter': <FilterIcon color={iconColor} />,
                                 'github': <GithubIcon color={iconColor} />,
+                                'file': <FileIcon color={iconColor} />,
+                                'burger': <BurgerIcon color={iconColor} />,
+                                'times': <TimesIcon color={iconColor} />,
                             }[icon]}
                         </div>
                     )}
