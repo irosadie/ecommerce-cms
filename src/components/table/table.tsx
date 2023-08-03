@@ -7,7 +7,7 @@ import Skeleton from 'react-loading-skeleton'
 import styles from './table.module.scss'
 
 type THeadProps = {
-    title: string;
+    title: string | JSX.Element;
     className?: string;
 }
 
@@ -48,14 +48,16 @@ const Table: FC<TableProps> = (props) => {
     return (
         <Fragment>
             <div>
-                <table className={styles.table}>
-                    <TableTitle thead={thead} />
-                    {{
-                        'LOADING': <TableLoading thead={thead} />,
-                        'CONTENT': <TableContent data={data} />,
-                        'NO_CONTENT': <TableNoContent thead={thead} />,
-                    }[stateRender ?? 'LOADING']}
-                </table>
+                <div className='relative overflow-x-auto'>
+                    <table className={styles.table}>
+                        <TableTitle thead={thead} />
+                        {{
+                            'LOADING': <TableLoading thead={thead} />,
+                            'CONTENT': <TableContent data={data} />,
+                            'NO_CONTENT': <TableNoContent thead={thead} />,
+                        }[stateRender ?? 'LOADING']}
+                    </table>
+                </div>
                 {{
                     'LOADING': <PaginationSkeleton />,
                     'CONTENT': <PaginationContent
@@ -85,15 +87,15 @@ const TableLoading = memo(({ thead }: ThTableProps) => {
     const randomWidth = [85, 90, 100, 100]
     const trBody: JSX.Element[] = [];
 
-    [...new Array(10)].map((val) => {
+    [...new Array(10)].map((_val, index) => {
         const td: JSX.Element[] = []
 
-        thead.map(() => {
+        thead.map((value, theadIndex) => {
             const randomIndex = Math.floor(Math.random() * 5)
 
-            td.push(<td key={`_td_${val}`} className={tdVariant({ position: 'left', className: styles.td_loading })}><Skeleton height={24} width={`${randomWidth[randomIndex]}%`} /></td>)
+            td.push(<td key={`_td_${index}_${theadIndex}`} className={tdVariant({ position: 'left', className: styles.td_loading })}><Skeleton height={24} width={`${randomWidth[randomIndex]}%`} /></td>)
         })
-        trBody.push(<tr key={`_trbody_${val}`} className={trBodyVariant()}>{td}</tr>)
+        trBody.push(<tr key={`_trbody_${index}`} className={trBodyVariant()}>{td}</tr>)
     })
     return <tbody>{trBody}</tbody>
 })

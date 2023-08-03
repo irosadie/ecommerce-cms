@@ -120,7 +120,7 @@ const TextInput: FC<TextInputProps> = (props) => {
                 <div className={styles.p_relative}>
                     {LEFTICON && (<div className={styles.icon_wrapper_left}>{LEFTICON}</div>)}
                     <input
-                        className={textInput({ intent: error ? 'error' : intent, leftIcon: leftIcon ? true : false, rightIcont: rightIcon ? true : false, dimension, className })}
+                        className={textInput({ intent: error ? 'error' : intent, leftIcon: leftIcon ? true : false, rightIcont: rightIcon || isShowCloseIcon ? true : false, dimension, className })}
                         id={`_${id}`}
                         value={tmpValue}
                         name={name}

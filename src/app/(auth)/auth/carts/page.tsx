@@ -19,24 +19,19 @@ import { useCart } from '$/hooks/use-cart'
 
 const THEAD = [
   {
-    title: 'Product ID',
-    className: 'w-[10%]',
+    title: 'ID',
   },
   {
     title: 'Product',
-    className: 'w-[40%]',
   },
   {
-    title: 'Price /Item',
-    className: 'w-[15%]',
+    title: 'Price',
   },
   {
-    title: 'Quantity',
-    className: 'w-[12%]',
+    title: 'Qtty',
   },
   {
-    title: 'Price (total)',
-    className: 'w-[12%]',
+    title: 'Amount',
   },
   {
     title: 'Discount (%)',
@@ -54,7 +49,6 @@ const ProductPage = () => {
   const page = searchParams?.get('page')
 
   const [dataTabel, setDataTabel] = useState<TableProps['data']>()
-  const [hasId, setHasId] = useState(false)
 
   const { dataSelect } = useCart()
 
@@ -89,14 +83,13 @@ const ProductPage = () => {
 
       params.delete('page')
       params.set('id', dataSelect[0].value as string)
-      setHasId(true)
       return router.replace(`${path}?${params}`)
     }
 
   }, [dataSelect])
 
   useEffect(() => {
-    if (hasId) {
+    if (page || id) {
       fetchPage({
         page: Number(page),
         cartId: Number(id)
@@ -186,13 +179,13 @@ const ProductPage = () => {
         />
 
         <Card className='pb-8'>
-          <div className='flex justify-between border-b mb-4 p-4'>
+          <div className='grid gap-y-2 tablet:flex justify-between border-b mb-4 p-4'>
             <div>
               <h2 className='font-medium text-lg'>Detail of Cart</h2>
             </div>
             <div className=''>
               <Select
-                id="serach"
+                id="search"
                 className='w-60'
                 options={dataSelect}
                 onChange={(val) => handleOnCartChange({ value: val?.value })}
@@ -200,46 +193,46 @@ const ProductPage = () => {
               />
             </div>
           </div>
-          <ul className='grid grid-cols-2 gap-x-8 gap-y-3 text-sm p-4'>
+          <ul className='grid grid-col-1 tablet:grid-cols-2 gap-x-8 gap-y-3 text-sm p-4'>
             <li>
-              <div className='flex'>
-                <span className='font-semibold w-1/2'>Username</span>
-                <span>: @{user?.username}</span>
+              <div className='grid tablet:flex gap-y-2'>
+                <span className='font-semibold tablet:w-1/2'>Username</span>
+                <p><span className='hidden tablet:inline'>:</span> @{user?.username}</p>
               </div>
             </li>
             <li>
-              <div className='flex'>
-                <span className='font-semibold w-1/2'>Full Name</span>
-                <span>: {`${user?.firstName} ${user?.maidenName} ${user?.lastName}`}</span>
+              <div className='grid tablet:flex gap-y-2'>
+                <span className='font-semibold tablet:w-1/2'>Full Name</span>
+                <p><span className='hidden tablet:inline'>:</span> {`${user?.firstName} ${user?.maidenName} ${user?.lastName}`}</p>
               </div>
             </li>
             <li>
-              <div className='flex'>
-                <span className='font-semibold w-1/2'>Total</span>
-                <span>: {count} Items</span>
+              <div className='grid tablet:flex gap-y-2'>
+                <span className='font-semibold tablet:w-1/2'>Total</span>
+                <p>: {count} Items</p>
               </div>
             </li>
             <li>
-              <div className='flex'>
-                <span className='font-semibold w-1/2'>Quantity Item</span>
+              <div className='grid tablet:flex gap-y-2'>
+                <span className='font-semibold tablet:w-1/2'>Quantity Item</span>
                 <span>: <Badge>{quantity}</Badge></span>
               </div>
             </li>
             <li>
-              <div className='flex'>
-                <span className='font-semibold w-1/2'>Amount</span>
+              <div className='grid tablet:flex gap-y-2'>
+                <span className='font-semibold tablet:w-1/2'>Amount</span>
                 <span>: <s>{currencyFormat({ amount, prefix: '$' })}</s></span>
               </div>
             </li>
             <li>
-              <div className='flex'>
-                <span className='font-semibold w-1/2'>Discount (Avarage)</span>
+              <div className='grid tablet:flex gap-y-2'>
+                <span className='font-semibold tablet:w-1/2'>Discount (Avarage)</span>
                 <span className='font-bold'>: {discount}%</span>
               </div>
             </li>
             <li>
-              <div className='flex'>
-                <span className='font-semibold w-1/2'>Discounted Amount</span>
+              <div className='grid tablet:flex gap-y-2'>
+                <span className='font-semibold tablet:w-1/2'>Discounted Amount</span>
                 <span className='font-bold'>: {currencyFormat({ amount: discountedAmount, prefix: '$' })}</span>
               </div>
             </li>
