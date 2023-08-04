@@ -291,7 +291,6 @@ const ProductPage = () => {
             onPageChange: handlePageChanged,
           }}
         />
-        {JSON.stringify(formSearch.touched.q ? true : false)}
         <FilterProduct
           isShow={isShowFilter}
           onClose={() => setIsShowFilter(v => !v)}

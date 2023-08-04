@@ -91,6 +91,7 @@ const TableLoading = memo(({ thead }: ThTableProps) => {
         const td: JSX.Element[] = []
 
         thead.map((value, theadIndex) => {
+
             const randomIndex = Math.floor(Math.random() * 5)
 
             td.push(<td key={`_td_${index}_${theadIndex}`} className={tdVariant({ position: 'left', className: styles.td_loading })}><Skeleton height={24} width={`${randomWidth[randomIndex]}%`} /></td>)
