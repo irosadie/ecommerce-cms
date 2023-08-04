@@ -1,11 +1,11 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import React, { FC, Fragment, ReactNode } from 'react'
+import React, { FC, Fragment, ReactNode, useEffect } from 'react'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { RecoilRoot } from 'recoil'
 import { CustomFlowbiteTheme, Flowbite } from 'flowbite-react'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 type RootTemplateProps = {
@@ -35,6 +35,24 @@ const RootTemplate: FC<RootTemplateProps> = ({ children }) => {
       }
     }
   }
+
+  const handleOnline = () => {
+    toast.success('Yey, you are back online!', { theme: 'colored', autoClose: 10000 })
+  }
+
+  const handleOffline = () => {
+    toast.error('Your connection was interrupted!', { theme: 'colored', autoClose: 15000 })
+  }
+
+  useEffect(() => {
+    window.addEventListener('online', handleOnline)
+    window.addEventListener('offline', handleOffline)
+
+    return () => {
+      window.removeEventListener('online', handleOnline)
+      window.removeEventListener('offline', handleOffline)
+    }
+  }, [])
 
   return (
     <Fragment>
